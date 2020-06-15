@@ -11,7 +11,7 @@ router.get("/", function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-			res.render("shelters/index", {shelters: allShelters, currentUser: req.user});
+			res.render("shelters/index", {shelters: allShelters, currentUser: req.user, page: "shelters"});
 		}
 	})
 });
