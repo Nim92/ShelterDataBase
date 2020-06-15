@@ -9,8 +9,10 @@ var middleware = require("../middleware");
 router.get("/new", middleware.isLoggedIn, function(req, res){
 	//find shelter by id
 	Shelter.findById(req.params.id, function(err, shelter){
-		if(err){
+		if(err || !shelter){
+			req.flash("error", "Shelter blev ikke fundet");
 			console.log(err);
+			res.redirect("back");
 		} else{
 			res.render("comments/new", {shelter: shelter});
 		}
@@ -50,13 +52,21 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
 // Comment edit route
 router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
-	Comment.findById(req.params.comment_id, function(err, foundComment){
-		if(err){
-			res.redirect("back");
-		} else {
-			res.render("comments/edit", {shelter_id: req.params.id, comment: foundComment});
+	Shelter.findById(req.params.id, function(err, foundShelter){
+		if(err || !foundShelter){
+			req.flash("error", "Shelter blev ikke fundet");
+			return res.redirect("back");
 		}
+		Comment.findById(req.params.comment_id, function(err, foundComment){
+			if(err || !foundComment){
+				req.flash("error", "Kommentar blev ikke fundet")
+				res.redirect("back")
+			} else {
+				res.render("comments/edit", {shelter_id: req.params.id, comment: foundComment});
+			}
+		});
 	});
+	
 });
 
 // Comments update
