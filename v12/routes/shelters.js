@@ -48,8 +48,10 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 router.get("/:id", function(req, res){
 	//find shelter with provided ID
 	Shelter.findById(req.params.id).populate("comments").exec(function(err, foundShelter){
-		if(err){
+		if(err || !foundShelter){
+			req.flash("error", "Shelter blev ikke fundet");
 			console.log(err);
+			res.redirect("back")
 		} else {
 			//render show template with that shelter
 			res.render("shelters/show", {shelter: foundShelter});
