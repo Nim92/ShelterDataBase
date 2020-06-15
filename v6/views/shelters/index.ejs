@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+
+
+ <div class="container">
+	 <header class="jumbotron">
+		 <div class="container">
+			<h1>Velkommen til Shelter databasen!</h1>
+			<p>Her kan du se en masse sheltere i Danmark og tilføje nye til listen!</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="/shelters/new">Tilføj nyt shelter</a>
+			</p> 
+		 </div>	
+	</header>
+
+
+	<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+		<% shelters.forEach(function(shelter){ %>
+			<div class="col-md-3 col-sm-6">
+				<div>
+					<div class="thumbnail">
+						<img src="<%= shelter.image %>">
+						<div class="caption">
+							<h4><%= shelter.name %></h4>
+						</div>
+						<p>
+							<a href="/shelters/<%= shelter._id %>" class="btn btn-primary">Mere information</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+</div>
+
+
+
+
+<%- include("../partials/footer") %>

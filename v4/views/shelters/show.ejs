@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+
+<h1>
+	<%= shelter.name %>
+</h1>
+
+
+<img src=" <%= shelter.image %>">
+
+<p>
+	<%= shelter.description %>
+</p>
+
+<p>
+	<a class="btn btn-success" href="/shelters/<%= shelter._id %>/comments/new">Tilføj ny kommentar</a>
+</p>
+
+
+<% shelter.comments.forEach(function(comment){ %>
+	<p>
+		<strong><%= comment.author %></strong> - <%= comment.text %></p>
+<% }) %>
+
+<%- include("../partials/footer") %>

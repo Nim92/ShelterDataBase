@@ -1,0 +1,82 @@
+body {
+  background-color: #000;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(https://www.hyllingeby.dk/wp-content/uploads/2018/06/DSC_0016.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(https://files.guidedanmark.org/files/471/171489_Lvbakke-Shelterplads.png?width=1024);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://bookenshelter.dk/wp-content/uploads/2017/11/sofielund-begge-shelter.jpg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://www.visitholbaek.dk/sites/visitholbaek.com/files/2019-09/Shelterplads-hos-%C3%85mosenaturcamp-i-Naturpark-%C3%85mosen_foto-%C3%85mosenaturcamp.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://www.holstebro.dk/admin/public/getimage.ashx?Crop=4&Image=/Files/Images/4-kultur/friluftsliv/Shelterbooking_Tvis%20Kloster.jpg&Format=jpg&Width=5120&Height=0&Quality=75);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
