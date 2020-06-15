@@ -7,7 +7,7 @@ middlewareObj.checkShelterOwnership = function(req, res, next) {
 	if(req.isAuthenticated()){
 		// is user logged in
 			Shelter.findById(req.params.id, function(err, foundShelter){
-				if(err){
+				if(err || !foundShelter){
 					req.flash("error", "Shelter blev ikke fundet");
 					res.redirect("back");
 				} else {
@@ -31,7 +31,8 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
 	if(req.isAuthenticated()){
 		// is user logged in
 			Shelter.findById(req.params.id, function(err, foundComment){
-				if(err){
+				if(err || !foundComment){
+					req.flash("error", "Kommentar blev ikke fundet")
 					res.redirect("back")
 				} else {
 					// does user own the comment?
