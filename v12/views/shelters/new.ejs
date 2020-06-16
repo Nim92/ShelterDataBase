@@ -5,16 +5,16 @@
 		<div style="width: 30%; margin: 20px auto;">
 			<form action="/shelters" method="POST">
 				<div class="form-group">
-					<input class="form-control" type="text" name="name" placeholder="Navn">
+					<input class="form-control" type="text" name="name" placeholder="Navn på shelter">
 				</div>
 				<!-- <div class="form-group">
 					<input class="form-control" type="number" name="price" placeholder="Pris" min="0.01" step="0.01">
 				</div> -->
 				<div class="form-group">
-					<input class="form-control" type="text" name="image" placeholder="Billede Link">
+					<input class="form-control" type="text" name="image" placeholder="Billedets webadresse, f.eks kopieret fra google">
 				</div>
 				<div class="form-group">
-					<input class="form-control" type="text" name="description" placeholder="Beskrivelse af shelterplads">
+					<textarea class="form-control" name="description" cols="40" rows="5" placeholder="Beskrivelse af shelterplads"></textarea>
 				</div>
 				<div class="form-group">
 					<button class="btn btn-lg btn-primary btn-block">Tilføj</button>
