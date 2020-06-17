@@ -16,7 +16,9 @@ var commentRoutes    = require("./routes/comments"),
     shelterRoutes 	 = require("./routes/shelters"),
     indexRoutes      = require("./routes/index")
 
-mongoose.connect("mongodb://localhost/shelter_db_v10", { useNewUrlParser: true, useUnifiedTopology: true});
+var url = process.env.DATABASEURL || "mongodb://localhost/shelter_db_v10"
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true});
+
 mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
