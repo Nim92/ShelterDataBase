@@ -1,7 +1,5 @@
 <%- include("../partials/header") %>
 
-
-
 	 <header class="jumbotron">
 		 <div class="container">
 			<h1>Velkommen til Shelter databasen!</h1>
@@ -15,16 +13,12 @@
 
 	<div class="row text-center" style="display:flex; flex-wrap: wrap;">
 		<% shelters.forEach(function(shelter){ %>
-			<div class="col-md-3 col-sm-6">
-				<div>
-					<div class="thumbnail">
-						<img src="<%= shelter.image %>">
-						<div class="caption">
-							<h4><%= shelter.name %></h4>
-						</div>
-						<p>
-							<a href="/shelters/<%= shelter._id %>" class="btn btn-primary">Mere information</a>
-						</p>
+			<div class=" col-lg-3 col-md-4 col-sm-6 mb-4">	
+				<div class="card">
+					<img src="<%= shelter.image %>" class="card-img-top" alt="<%= shelter.name %>">
+					<div class="card-body">
+						<h5 class="card-title"><%= shelter.name %></h5>
+						<a href="/shelters/<%= shelter._id %>" class="btn btn-primary">Mere information</a>
 					</div>
 				</div>
 			</div>
